@@ -1,4 +1,4 @@
-"""Appli's model"""
+"""Model"""
 
 class Player:
     """Player's class"""
@@ -13,7 +13,7 @@ class Player:
         self.rank = rank
         self.score = 0.0
         self.taken = False
-        self.meet = []
+        self.meet = [ident]
 
     def __repr__(self):
         return 'ID: {6} Nom: {0} Prénom: {1} Date: {2} Sex: {3} Elo: {4} Score: {5} Occupé : {7} Rencontre : {8}'.format(
@@ -42,11 +42,20 @@ Controle de temps: {4}\nDescription: {5}'.format(self.name_t, self.location,
 class Round:
     """Round's class"""
 
-    def __init__(self, name, date_start, date_end):
+    def __init__(self, name_r, time_start):
         """Round's construction"""
-        self.name = name
-        self.date_start = date_start
-        self.date_end = date_end
+        self.name_r = name_r
+        self.time_start = time_start
+        self.time_end = ""
+        self.list_match = []
+
+    def add_time(self, time_end):
+        """Modif time_end, list_match"""
+        self.time_end = time_end
+
+    def __repr__(self):
+        return '{0} Début: {1} Fin: {2}\n Match : {3}'.format(
+        self.name_r, self.time_start, self.time_end, self.list_match)
 
 class Game:
     """Game's class"""
@@ -57,4 +66,4 @@ class Game:
         self.match_score = match_score
 
     def __repr__(self):
-        return 'Match {0} Score {1}'.format(self.match_name, self.match_score)
+        return '{0} {1}'.format(self.match_name, self.match_score)

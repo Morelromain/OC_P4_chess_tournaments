@@ -1,51 +1,69 @@
-"""Menu"""
+"""Main"""
 
 import time
 
 import controller as ctlr
 import create
+import cmenu
+
+
+print(time.strftime('%H:%M:%S'))
+
 
 menu = 0
-
-
-while menu != 11:
-    print(
-    "CREER                       VOIR\n\
-    1 : Création Tournoi        6 : Voir Tournoi\n\
-    2 : Création Joueur         7 : Voir Joueur\n\
-    3 : Remplir Round 1         8 : Voir Round 1\n\
-    4 : Remplir Round 2         9 : Voir Round 2\n\
-    5 : Remplir Round 3         10: Voir Round 3"
-    )
-    menu = int(ctlr.valid_int("Que voulez vous faire? (1 à 11) : "))
-    if menu > 10:
+while menu != 5:
+    cmenu.menustart()
+    menu = int(ctlr.valid_int("Que voulez vous faire? (1 à 5) : "))
+    if menu > 5:
         print("Ce nombre n'existe pas dans le menu")
     if menu == 1:
-        trmnt = create.create_tournament()
-        print(trmnt.name_t, "créé")
+        print("Voir précédants tournois")
     if menu == 2:
-        list_p = create.create_player()
+        print("Voir classement joueur")
     if menu == 3:
-        #4 MATCH OK, NOM ROUND A CREER
-        
-        list_game,list_p = create.create_round(list_p)
+        print("Changer Elo d'un joueur")
     if menu == 4:
-        print("Remplir Round 2")
-    if menu == 5:
-        print("Remplir Round 3")
-    if menu == 6:
-        print(trmnt)
-    if menu == 7:
-        print ('Classement des 8 joueurs : ')
-        for nb in range(8):
-            print ('joueur', nb+1, ': {0}.'.format(list_p[nb]))
-    if menu == 8:
-        print ('Affichage Round 1 : ')
-        for nb in range(4):
-            print ('match', nb+1, ': {0}.'.format(list_game[nb]))
-    if menu == 9:
-        print("Voir Round 2")
-    if menu == 10:
-        print("Voir Round 3")
-    time.sleep(2)
-    menu = 0
+        print("Création tournoi/joueur")
+        trmnt = create.create_tournament()
+        list_p = create.create_player()
+        firstround = False
+        list_game = []
+        list_match = []
+        list_rounds = []
+        counter = 1
+        while menu != 9:
+            cmenu.menuround()
+            menu = int(ctlr.valid_int("Que voulez vous faire? (1 à 8) : "))
+            if menu > 9:
+                print("Ce nombre n'existe pas dans le menu")
+            if menu == 1:
+                print("Voir précédants tournois")
+            if menu == 2:
+                print("Voir classement joueur")
+            if menu == 3:
+                print("Changer Elo d'un joueur")
+            if menu == 4:
+                if firstround == False:
+                    list_game, list_p = create.start_fround(list_p, list_game, list_rounds)
+                    firstround = True
+                else:
+                    list_game,list_p,counter = create.start_sround(list_p, list_game, list_rounds, counter)
+            if menu == 5:
+                print ('Affichage des rounds : ')
+                for nb in range(len(list_rounds)):
+                    print ('{0} Début: {1} Fin: {2}'.format(list_rounds[nb].name_r, list_rounds[nb].time_start, list_rounds[nb].time_end))
+                    for nbr in range(4):
+                        print ('{0}'.format(list_rounds[nb].list_match[nbr]))
+            if menu == 6:
+                print ('Classement des 8 joueurs : ')
+                for nb in range(8):
+                    print ('joueur', nb+1, ': {0}.'.format(list_p[nb]))
+            if menu == 7:
+                print ('Affichage des matchs du tournois : ')
+                for nb in range(len(list_game)):
+                    print ('match', nb+1, ': {0}.'.format(list_game[nb]))
+            if menu == 8:
+                print ('Affichage des infos du tournoi : ')
+                print(trmnt)
+
+        menu = 5

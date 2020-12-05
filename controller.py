@@ -10,20 +10,47 @@ def valid_int(ask):
         nb = (input(ask))
         verif = nb.isdigit()
         if verif:
+            nb = int(nb)
             valid = True
             return nb
         else:
             print('Saisi invalide, veuillez rentrer un chiffre')
+
+def valid_float(ask):
+    """Valid question if not empty only"""
+    valid = False
+    while valid != True:
+        nb = (input(ask))
+        if nb != '':
+            nb = float(nb)
+            valid = True
+            return nb            
+        else:
+            print('Saisi invalide (vide)')
+
+def valid_str(ask):
+    """Valid question if not empty only"""
+    valid = False
+    while valid != True:
+        info = (input(ask))
+        if info != '':
+            valid = True
+            return info            
+        else:
+            print('Saisi invalide (vide)')
 
 def valid_name(ask):
     """Up and normalize reply"""
     valid = False
     while valid != True:
         info = (input(ask))
-        info = info.upper()
-        infnorm = normalize('NFKD', info)
-        valid = True
-        return "".join([c for c in infnorm if not combining(c)])
+        if info != '':
+            info = info.upper()
+            infnorm = normalize('NFKD', info)
+            valid = True
+            return "".join([c for c in infnorm if not combining(c)])
+        else:
+            print('Saisi invalide (vide)')
 
 def valid_sex(ask):
     """Valid sex question if F/M only, up reply"""
