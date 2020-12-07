@@ -3,10 +3,11 @@
 import datetime
 from unicodedata import normalize, combining
 
+
 def valid_int(ask):
     """Valid question if number only"""
     valid = False
-    while valid != True:
+    while valid is not True:
         nb = (input(ask))
         verif = nb.isdigit()
         if verif:
@@ -16,33 +17,36 @@ def valid_int(ask):
         else:
             print('Saisi invalide, veuillez rentrer un chiffre')
 
+
 def valid_float(ask):
     """Valid question if not empty only"""
     valid = False
-    while valid != True:
+    while valid is not True:
         nb = (input(ask))
         if nb != '':
             nb = float(nb)
             valid = True
-            return nb            
+            return nb
         else:
             print('Saisi invalide (vide)')
+
 
 def valid_str(ask):
     """Valid question if not empty only"""
     valid = False
-    while valid != True:
+    while valid is not True:
         info = (input(ask))
         if info != '':
             valid = True
-            return info            
+            return info
         else:
             print('Saisi invalide (vide)')
+
 
 def valid_name(ask):
     """Up and normalize reply"""
     valid = False
-    while valid != True:
+    while valid is not True:
         info = (input(ask))
         if info != '':
             info = info.upper()
@@ -52,10 +56,11 @@ def valid_name(ask):
         else:
             print('Saisi invalide (vide)')
 
+
 def valid_sex(ask):
     """Valid sex question if F/M only, up reply"""
     valid = False
-    while valid != True:
+    while valid is not True:
         sex = (input(ask))
         sex = sex.upper()
         if sex == 'F' or sex == 'M':
@@ -64,10 +69,11 @@ def valid_sex(ask):
         else:
             print('Saisi invalide, veuillez rentrer F ou M (Femme/Homme)')
 
+
 def valid_date(ask):
     """Valid date question if DD/MM/YYYY only, date's format reply"""
     valid = False
-    while valid != True:    
+    while valid is not True:
         try:
             date_text = (input(ask))
             date = datetime.datetime.strptime(date_text, '%d/%m/%Y')
@@ -76,6 +82,7 @@ def valid_date(ask):
             return date
         except ValueError:
             print('Saisi invalide, veuillez rentrer ce format : DD/MM/YYYY')
+
 
 def valid_summary(ask):
     """Valid summary question if O/N only, up reply"""
@@ -90,4 +97,4 @@ def valid_summary(ask):
             print('Vous avez n\'avez pas validé')
             break
         else:
-            print ('Repondez par la touche O ou N (Oui/Non)')
+            print('Repondez par la touche O ou N (Oui/Non)')

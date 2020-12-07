@@ -1,5 +1,6 @@
 """Model"""
 
+
 class Player:
     """Player's class"""
 
@@ -16,14 +17,17 @@ class Player:
         self.meet = [ident]
 
     def __repr__(self):
-        return 'ID: {6} Nom: {0} Prénom: {1} Date: {2} Sex: {3} Elo: {4} Score: {5} Occupé : {7} Rencontre : {8}'.format(
-        self.name, self.fname, self.date, self.sex, self.rank, self.score, self.ident, self.taken, self.meet) #info non necessaire
+        return 'ID: {6} Nom: {0} Prénom: {1} Date: {2} Sex: {3} Elo: {4} Score: {5} \
+Occupé : {7} Rencontre : {8}'.format(self.name, self.fname, self.date,
+                                     self.sex, self.rank, self.score,
+                                     self.ident, self.taken, self.meet)
+
 
 class Tournament:
     """Tournament's class"""
 
-    def __init__(self, name_t, location, date, nb_round, 
-    c_time, description, i_player, i_round):
+    def __init__(self, name_t, location, date, nb_round,
+                 c_time, description, i_player, i_round):
         """Tournament's construction"""
         self.name_t = name_t
         self.location = location
@@ -36,8 +40,10 @@ class Tournament:
 
     def __repr__(self):
         return 'Tournois: {0} Lieu: {1} Date: {2}\nNombre de tours: {3} \
-Controle de temps: {4}\nDescription: {5}'.format(self.name_t, self.location, 
-        self.date, self.nb_round, self.c_time, self.description)
+Controle de temps: {4}\nDescription: {5}'.format(self.name_t, self.location,
+                                                 self.date, self.nb_round,
+                                                 self.c_time, self.description)
+
 
 class Round:
     """Round's class"""
@@ -54,8 +60,9 @@ class Round:
         self.time_end = time_end
 
     def __repr__(self):
-        return '{0} Début: {1} Fin: {2}\n Match : {3}'.format(
-        self.name_r, self.time_start, self.time_end, self.list_match)
+        return '{0} Début: {1} Fin: {2}'.format(self.name_r, self.time_start,
+                                                self.time_end)
+
 
 class Game:
     """Game's class"""
