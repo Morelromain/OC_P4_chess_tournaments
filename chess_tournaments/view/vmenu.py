@@ -2,7 +2,7 @@
 
 
 def menustart():
-    print("TOURNOIS SUISSE\n\
+    print("\nTOURNOIS SUISSE\n\
 1 : Voir précédants tournois\n\
 2 : Voir classement joueur\n\
 3 : Changer Elo d'un joueur\n\
@@ -15,7 +15,7 @@ def menustart():
 
 
 def menuround():
-    print("TOURNOIS SUISSE\n\
+    print("\nTOURNOIS SUISSE\n\
 1 : Voir précédants tournois\n\
 2 : Voir classement joueur\n\
 3 : Changer Elo d'un joueur\n\
@@ -28,7 +28,7 @@ def menuround():
 
 
 def menufinal():
-    print("TOURNOIS SUISSE\n\
+    print("\nTOURNOIS SUISSE\n\
 1 : Voir précédants tournois\n\
 2 : Voir classement joueur\n\
 3 : Changer Elo d'un joueur\n\

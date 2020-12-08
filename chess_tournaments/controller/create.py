@@ -5,8 +5,8 @@ import math
 from random import choice
 from operator import attrgetter
 
-import model
-import controller as ctlr
+from ..model import model
+from . import validation as val
 
 
 def create_tournament():
@@ -14,20 +14,17 @@ def create_tournament():
     print('création du tournois')
     valid = False
     while valid is not True:
-        name_t = ctlr.valid_str('le nom du tournois : ')
-        location = ctlr.valid_str('le lieu du tournois : ')
-        date = ctlr.valid_str('la date du tournois : ')
-        c_time = ctlr.valid_str('controle temps (bullet/blitz/coup rapide) : ')
-        description = ctlr.valid_str('la description du tournois : ')
+        name_t = val.valid_str('le nom du tournois : ')
+        loc = val.valid_str('le lieu du tournois : ')
+        date = val.valid_str('la date du tournois : ')
+        c_time = val.valid_str('controle temps (bullet/blitz/coup rapide) : ')
+        detail = val.valid_str('la description du tournois : ')
         nb_p = int(input("combien de joueurs? (pair) : "))
         nb_round = math.ceil(math.log2(nb_p))
-        i_player = ""  # instance de joueurs
-        i_round = ""  # instance de round
-        trnmt = model.Tournament(name_t, location, date, nb_round, c_time,
-                                 description, i_player, i_round)
-        print(trnmt)
-        valid = ctlr.valid_summary("Valider? (O/N) : ")
-    print('le tournois {0} à été créé.'.format(trnmt.name_t))
+        trnmt = model.Tournament(name_t, loc, date, nb_round, c_time, detail)
+        print(trnmt)#ligne a enlever?
+        valid = val.valid_summary("Valider? (O/N) : ")
+    print('le tournois {0} à été créé.\n'.format(trnmt.name_t))
     return trnmt, nb_p, nb_round
 
 
@@ -39,14 +36,14 @@ def create_player(nb_p):
         valid = False
         while valid is not True:
             ident = nb+1
-            name = ctlr.valid_name('le nom du joueur : ')
-            fname = "m"  # ctlr.valid_str('le prénom du joueur : ')
-            date = 1  # ctlr.valid_date('la date de naissance du joueur : ')
-            sex = "m"  # ctlr.valid_sex('le sexe du joueur (F/M) : ')
-            rank = ctlr.valid_int('le niveau du joueur (elo): ')
+            name = val.valid_name('le nom du joueur : ')
+            fname = "m"  # val.valid_str('le prénom du joueur : ')
+            date = 1  # val.valid_date('la date de naissance du joueur : ')
+            sex = "m"  # val.valid_sex('le sexe du joueur (F/M) : ')
+            rank = val.valid_int('le niveau du joueur (elo): ')
             player = model.Player(ident, name, fname, date, sex, rank)
             print(player)
-            valid = ctlr.valid_summary("Valider? (O/N) : ")
+            valid = val.valid_summary("Valider? (O/N) : ")
         list_p.append(player)
     list_p = sorted(list_p, key=attrgetter("score", "rank"), reverse=True)
     return list_p
@@ -70,8 +67,9 @@ def start_fround(list_p, nb_p):
     name_r = "Round n°1"
     time_start = time.strftime('%H:%M:%S')
     rounds = model.Round(name_r, time_start)
-    print(rounds)
+    print(rounds.time_end)
     list_rounds.append(rounds)
+    list_p = sorted(list_p, key=attrgetter("score", "rank"), reverse=True)
     # Input des matchs
     input("appuyer sur entrée pour rentrer les scores du round\n")
     for nb in range(half_p):
@@ -79,14 +77,14 @@ def start_fround(list_p, nb_p):
               list_p[nb+half_p].ident, list_p[nb+half_p].name,
               list_p[nb+half_p].fname)
         # joueurnb
-        point = ctlr.valid_float("Resultat " + list_p[nb].name + " "
+        point = val.valid_float("Resultat " + list_p[nb].name + " "
                                  + list_p[nb].fname + " : ")
         point = float(point)
         list_p[nb].score += point
         meet = list_p[nb+half_p].ident
         list_p[nb].meet.append(meet)
         # joueurnb+4
-        point = ctlr.valid_float("Resultat " + list_p[nb+half_p].name + " "
+        point = val.valid_float("Resultat " + list_p[nb+half_p].name + " "
                                  + list_p[nb+half_p].fname + " : ")
         point = float(point)
         list_p[nb+half_p].score += point
@@ -157,14 +155,15 @@ def start_sround(list_p, list_game, list_rounds, counter, nb_p):
         print(list_p[nb].ident, list_p[nb].name, list_p[nb].fname, "VS",
               list_p[nb_op].ident, list_p[nb_op].name, list_p[nb_op].fname)
         # joueurnb
-        point = input("Resultat "+list_p[nb].name+" "+list_p[nb].fname+" : ")
+        point = val.valid_float("Resultat " + list_p[nb].name + " "
+                                + list_p[nb].fname + " : ")
         point1 = float(point)
         list_p[nb].score += point1
         meet = list_p[nb_op].ident
         list_p[nb].meet.append(meet)
         # joueurnb+1
-        point = input("Resultat "+list_p[nb_op].name+" "
-                      + list_p[nb_op].fname+" : ")
+        point = val.valid_float("Resultat " + list_p[nb_op].name + " "
+                                + list_p[nb_op].fname + " : ")
         point2 = float(point)
         list_p[nb_op].score += point2
         meet = list_p[nb].ident
