@@ -2,6 +2,7 @@
 
 
 def menustart():
+    """display menu start"""
     print("\nTOURNOIS SUISSE\n\
 1 : Voir précédants tournois\n\
 2 : Voir classement joueur\n\
@@ -15,6 +16,7 @@ def menustart():
 
 
 def menuround():
+    """display menu after create tournament"""
     print("\nTOURNOIS SUISSE\n\
 1 : Voir précédants tournois\n\
 2 : Voir classement joueur\n\
@@ -28,6 +30,7 @@ def menuround():
 
 
 def menufinal():
+    """display menu after last round"""
     print("\nTOURNOIS SUISSE\n\
 1 : Voir précédants tournois\n\
 2 : Voir classement joueur\n\
