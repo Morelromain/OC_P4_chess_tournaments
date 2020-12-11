@@ -1,9 +1,11 @@
-"""Menu"""
+"""Menu view"""
 
+class ViewMenu:
+    """display menu"""
 
-def menustart():
-    """display menu start"""
-    print("\nTOURNOIS SUISSE\n\
+    def menustart(self):
+        """display menu start"""
+        print("\nTOURNOIS SUISSE\n\
 1 : Voir précédants tournois\n\
 2 : Voir classement joueur\n\
 3 : Changer Elo d'un joueur\n\
@@ -14,10 +16,9 @@ def menustart():
 8 : voir info tournoi\n\
 9 : Quitter")
 
-
-def menuround():
-    """display menu after create tournament"""
-    print("\nTOURNOIS SUISSE\n\
+    def menuround(self):
+        """display menu after create tournament"""
+        print("\nTOURNOIS SUISSE\n\
 1 : Voir précédants tournois\n\
 2 : Voir classement joueur\n\
 3 : Changer Elo d'un joueur\n\
@@ -28,10 +29,9 @@ def menuround():
 8 : voir info tournoi\n\
 9 : Quitter")
 
-
-def menufinal():
-    """display menu after last round"""
-    print("\nTOURNOIS SUISSE\n\
+    def menufinal(self):
+        """display menu after last round"""
+        print("\nTOURNOIS SUISSE\n\
 1 : Voir précédants tournois\n\
 2 : Voir classement joueur\n\
 3 : Changer Elo d'un joueur\n\

@@ -14,9 +14,3 @@ class Game:
                                            self.match_score[0][1],
                                            self.match_score[1][1],
                                            self.match_score[1][0])
-
-
-
- #   def __str__(self):
- #       """display game with print"""
- #       return repr(self)
