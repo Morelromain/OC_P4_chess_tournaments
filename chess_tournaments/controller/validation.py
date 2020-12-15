@@ -8,78 +8,82 @@ class Valid:
     """Valid Input"""
 
     def v_int(self, ask):
-        """Valid question if number only"""
-        valid = False
-        while valid is not True:
-            nb = (input(ask))
-            verif = nb.isdigit()
-            if verif:
-                nb = int(nb)
-                valid = True
-                return nb
-            else:
-                print('Saisi invalide, veuillez rentrer un chiffre')
+        """Valid question if int and not empty"""
+        while True:
+            try:
+                nb = int(input(ask))
+                break
+            except ValueError:
+                print("Chiffre invalide")
+        return nb
 
-    def v_float(self, ask):
-        """Valid question if not empty only"""
-        valid = False
-        while valid is not True:
-            nb = (input(ask))
-            if nb != '':
-                nb = float(nb)
-                valid = True
-                return nb
-            else:
-                print('Saisi invalide (vide)')
+    def v_player(self, ask):
+        """Valid question if int and not empty"""
+        while True:
+            try:
+                nb = int(input(ask))
+                if nb % 2 == 0:
+                    break
+                else:
+                    print("Chiffre invalide (impair)")
+            except ValueError:
+                print("Chiffre invalide")
+        return nb
+
+    def v_score(self, ident):
+        """Valid question if float and not empty"""
+        while True:
+            try:
+                score = float(input("Resultat  " + ident + ": "))
+                break
+            except ValueError:
+                print("Score invalide")
+        return score
 
     def v_str(self, ask):
         """Valid question if not empty only"""
-        valid = False
-        while valid is not True:
+        while True:
             info = (input(ask))
             if info != '':
-                valid = True
-                return info
+                break
             else:
                 print('Saisi invalide (vide)')
+        return info
 
     def v_name(self, ask):
         """Up and normalize reply"""
-        valid = False
-        while valid is not True:
+        while True:
             info = (input(ask))
             if info != '':
                 info = info.upper()
                 infnorm = normalize('NFKD', info)
-                valid = True
-                return "".join([c for c in infnorm if not combining(c)])
+                break
             else:
                 print('Saisi invalide (vide)')
+        return "".join([c for c in infnorm if not combining(c)])
 
     def v_sex(self, ask):
         """Valid sex question if F/M only, up reply"""
-        valid = False
-        while valid is not True:
+        while True:
             sex = (input(ask))
             sex = sex.upper()
             if sex == 'F' or sex == 'M':
-                valid = True
-                return sex
+                break
             else:
                 print('Saisi invalide, veuillez rentrer F ou M (Femme/Homme)')
+        return sex
 
     def v_date(self, ask):
         """Valid date question if DD/MM/YYYY only, date's format reply"""
-        valid = False
-        while valid is not True:
+        while True:
             try:
                 date_text = (input(ask))
                 date = datetime.datetime.strptime(date_text, '%d/%m/%Y')
-                valid = True
                 date = date.date()
-                return date
+                break
             except ValueError:
-                print('Saisi invalide, veuillez rentrer ce format : DD/MM/YYYY')
+                print('Veuillez rentrer ce format : DD/MM/YYYY')
+        return date
 
     def v_summary(self, ask):
         """Valid summary question if O/N only, up reply"""

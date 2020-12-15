@@ -1,6 +1,6 @@
 """Player's Model"""
 
-from tinydb import TinyDB, Query
+from tinydb import Query
 
 
 class Player:
@@ -30,28 +30,26 @@ Occupé : {7} Rencontre : {8}'.format(self.name, self.fname, self.date,
 
     def cancel_taken(self):
         """update_score"""
-        self.taken = False 
+        self.taken = False
 
     def append_meet(self, app):
         """append_meet"""
         self.meet.append(app)
 
-    def collect_id(self):
+    def collect_id(self, p_tab):
         """recup ident player"""
-        db = TinyDB("db.json")
-        p_tab = db.table("players")
         alldata_p = p_tab.all()
         nb_datap = len(alldata_p)
         self.ident = nb_datap + 1
 
-    def search_p(self):
+    def search_p(self, p_tab):
         """search player, if exist remplace data and take this ident
         if dont exist create in db"""
-        db = TinyDB("db.json")
-        p_tab = db.table("players")
         serialized_player = {"ident": self.ident, "name": self.name,
                              "fname": self.fname, "date": self.date,
-                             "sex": self.sex, "rank": self.rank}
+                             "sex": self.sex, "rank": self.rank,
+                             "score": self.score, "taken": self.taken,
+                             "meet": self.meet}
         fp = Query()
         exist = p_tab.search((fp.name == self.name) & (fp.fname == self.fname))
         if not(exist):
@@ -60,3 +58,8 @@ Occupé : {7} Rencontre : {8}'.format(self.name, self.fname, self.date,
         else:
             print("test2")
             self.ident = exist[0].get("ident")
+
+    def save_p(self, p_tab):
+        fp = Query()
+        p_tab.update({"score": self.score}, fp.ident == self.ident)
+        p_tab.update({"meet": self.meet}, fp.ident == self.ident)

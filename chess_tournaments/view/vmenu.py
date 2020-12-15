@@ -1,5 +1,6 @@
 """Menu view"""
 
+
 class ViewMenu:
     """display menu"""
 
@@ -7,37 +8,43 @@ class ViewMenu:
         """display menu start"""
         print("\nTOURNOIS SUISSE\n\
 1 : Voir précédants tournois\n\
-2 : Voir classement joueur\n\
+2 : Voir liste joueur Base de donnée\n\
 3 : Changer Elo d'un joueur\n\
 4 : CREATION DU TOURNOI ET DES JOUEURS\n\
 5 : Voir info round\n\
 6 : Voir joueur tournois en cour\n\
 7 : voir match du tournoi\n\
 8 : voir info tournoi\n\
-9 : Quitter")
+9 : SAUVEGARDE\n\
+10 : CHARGEMENT\n\
+11 : Quitter")
 
     def menuround(self):
         """display menu after create tournament"""
         print("\nTOURNOIS SUISSE\n\
 1 : Voir précédants tournois\n\
-2 : Voir classement joueur\n\
+2 : Voir liste joueur Base de donnée\n\
 3 : Changer Elo d'un joueur\n\
 4 : NOUVEAU ROUND\n\
 5 : Voir info round\n\
 6 : Voir joueur tournois en cour\n\
 7 : voir match du tournoi\n\
 8 : voir info tournoi\n\
-9 : Quitter")
+9 : SAUVEGARDE\n\
+10 : CHARGEMENT\n\
+11 : Quitter")
 
     def menufinal(self):
         """display menu after last round"""
         print("\nTOURNOIS SUISSE\n\
 1 : Voir précédants tournois\n\
-2 : Voir classement joueur\n\
+2 : Voir liste joueur Base de donnée\n\
 3 : Changer Elo d'un joueur\n\
 4 : FINIR LE TOURNOIS\n\
 5 : Voir info round\n\
 6 : Voir joueur tournois en cour\n\
 7 : voir match du tournoi\n\
 8 : voir info tournoi\n\
-9 : Quitter")
+9 : SAUVEGARDE\n\
+10 : CHARGEMENT\n\
+11 : Quitter")

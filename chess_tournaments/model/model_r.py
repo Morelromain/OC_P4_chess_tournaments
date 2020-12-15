@@ -1,4 +1,4 @@
-"""Model"""
+"""Round's Model"""
 
 import time
 
@@ -33,5 +33,3 @@ class Round:
                                                self.time_end,))
         for nb in range(len(self.list_match)):
             print(self.list_match[nb])
-
- 
