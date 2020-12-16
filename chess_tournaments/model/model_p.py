@@ -42,6 +42,11 @@ Occupé : {7} Rencontre : {8}'.format(self.name, self.fname, self.date,
         nb_datap = len(alldata_p)
         self.ident = nb_datap + 1
 
+    def save_p(self, p_tab):
+        fp = Query()
+        p_tab.update({"score": self.score}, fp.ident == self.ident)
+        p_tab.update({"meet": self.meet}, fp.ident == self.ident)
+
     def search_p(self, p_tab):
         """search player, if exist remplace data and take this ident
         if dont exist create in db"""
@@ -58,8 +63,4 @@ Occupé : {7} Rencontre : {8}'.format(self.name, self.fname, self.date,
         else:
             print("test2")
             self.ident = exist[0].get("ident")
-
-    def save_p(self, p_tab):
-        fp = Query()
-        p_tab.update({"score": self.score}, fp.ident == self.ident)
-        p_tab.update({"meet": self.meet}, fp.ident == self.ident)
+        

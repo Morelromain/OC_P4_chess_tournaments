@@ -12,10 +12,10 @@ class ViewMenu:
 3 : Changer Elo d'un joueur\n\
 4 : CREATION DU TOURNOI ET DES JOUEURS\n\
 5 : Voir info round\n\
-6 : Voir joueur tournois en cour\n\
+6 : Voir joueur tournoi en cour\n\
 7 : voir match du tournoi\n\
 8 : voir info tournoi\n\
-9 : SAUVEGARDE et quitter\n\
+9 : SAUVEGARDER et quitter\n\
 10 : Quitter sans sauvegarger")
 
     def menuround(self, count):
@@ -26,10 +26,10 @@ class ViewMenu:
 3 : Changer Elo d'un joueur\n\
 4 : FAIRE LE ROUND N°", count, "\n\
 5 : Voir info round\n\
-6 : Voir joueur tournois en cour\n\
+6 : Voir joueur tournoi en cour\n\
 7 : voir match du tournoi\n\
 8 : voir info tournoi\n\
-9 : SAUVEGARDE et quitter\n\
+9 : SAUVEGARDER et quitter\n\
 10 : Quitter sans sauvegarger")
 
     def menufinal(self):
@@ -40,10 +40,10 @@ class ViewMenu:
 3 : Changer Elo d'un joueur\n\
 4 : FINIR LE TOURNOI et quitter\n\
 5 : Voir info round\n\
-6 : Voir joueur tournois en cour\n\
+6 : Voir joueur tournoi en cour\n\
 7 : voir match du tournoi\n\
 8 : voir info tournoi\n\
-9 : SAUVEGARDE et quitter\n\
+9 : SAUVEGARDER et quitter\n\
 10 : Quitter sans sauvegarger")
 
     def Sentence(self, m_choice):

@@ -16,16 +16,13 @@ class ManagData:
         """update rank"""
         sp = Query()
         s_ident = int(input("ident du joueur : "))
-        print(s_ident)
         new_rank = int(input("changer le elo du joueur pour : "))
-        print(new_rank)
         p_tab.update({"rank": new_rank}, sp.ident == s_ident)
 
     def try_db_p(self, p_tab):
         """Sort"""
         sort_p = input("Tri par Nom (1) ou Elo (2) ? ")
         alldata_p = p_tab.all()
-        # p_data = ()
         list_p = []
         for nb in range(len(alldata_p)):
             p_data = ()
