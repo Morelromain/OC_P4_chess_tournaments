@@ -14,7 +14,7 @@ class Tournament:
         self.c_time = c_time
         self.detail = detail
         self.i_player = []
-        self.i_round = "pas de round en cour"
+        self.i_round = 0
         self.round = []
 
     def __repr__(self):
@@ -31,21 +31,3 @@ Dernier round joué: {6}'.format(self.name_t, self.loc,
     def add_round(self, rnd):
         """Modif time_end, list_match"""
         self.round.append(rnd)
-
-    def save_t(self, t_tab, list_p, list_r):
-        """Save tournament"""
-        info_r = []
-        self.i_player = []
-        for nb in range(len(list_p)):
-            self.i_player.append(list_p[nb].ident)
-        for nb in range(len(list_r)):
-            info_r.append(list_r[nb].name_r)
-            info_r.append(list_r[nb].time_start)
-            info_r.append(list_r[nb].time_end)
-            info_r.append(list_r[nb].list_match)
-        serialized_tournament = {"name_t": self.name_t, "place": self.loc,
-                                 "date": self.date, "nb_round": self.nb_round,
-                                 "c_time": self.c_time, "detail": self.detail,
-                                 "i_player": self.i_player,
-                                 "i_round": self.i_round, "INFO": info_r}
-        t_tab.insert(serialized_tournament)

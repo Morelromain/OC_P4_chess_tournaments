@@ -99,3 +99,28 @@ class Valid:
                 break
             else:
                 print('Repondez par la touche O ou N (Oui/Non)')
+
+    def v_duree(self, ask):
+        """Valid duree question"""
+        valid = input(ask)
+        valid = valid.upper()
+        if valid == 'O':
+            valid = True
+            date_f = Valid().v_date("la date de fin du tournois : ")
+            return date_f
+        elif valid == 'N':
+            valid = False
+            date_f = " "
+            return date_f
+        else:
+            print('Repondez par la touche O ou N (Oui/Non)')
+
+    def v_load(self, ask):
+        """Valid load question if 1/2 only, up reply"""
+        while True:
+            load = (input(ask))
+            if load == "1" or load == "2":
+                break
+            else:
+                print("Saisi invalide, veuillez choisir 1 ou 2")
+        return load

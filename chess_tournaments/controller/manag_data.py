@@ -1,6 +1,6 @@
 """Create """
 
-from ..view import vdb
+from ..view import results
 from ..model import model_t
 from ..model import model_r
 from ..model import model_g
@@ -11,6 +11,15 @@ from tinydb import Query
 
 class ManagData:
     """Controller Player"""
+
+    def update_rank(self, p_tab):
+        """update rank"""
+        sp = Query()
+        s_ident = int(input("ident du joueur : "))
+        print(s_ident)
+        new_rank = int(input("changer le elo du joueur pour : "))
+        print(new_rank)
+        p_tab.update({"rank": new_rank}, sp.ident == s_ident)
 
     def try_db_p(self, p_tab):
         """Sort"""
@@ -31,13 +40,31 @@ class ManagData:
         else:
             list_a = sorted(list_p, key=lambda colonnes: colonnes[5],
                             reverse=True)
-        vdb.ViewDB().display_all_p(list_a)
+        results.ViewDB().display_all_p(list_a)
 
     def save_data(self, p_tab, t_tab, trmnt, list_p, list_r):
         """save_data"""
-        trmnt.save_t(t_tab, list_p, list_r)
+        info_r = []
+        trmnt.i_player = []
         for nb in range(len(list_p)):
-            list_p[nb].save_p(p_tab)
+            trmnt.i_player.append(list_p[nb].ident)
+        for nb in range(len(list_r)):
+            info_r.append(list_r[nb].name_r)
+            info_r.append(list_r[nb].time_start)
+            info_r.append(list_r[nb].time_end)
+            info_r.append(list_r[nb].list_match)
+        serial_trnmt = {"name_t": trmnt.name_t, "place": trmnt.loc,
+                        "date": trmnt.date, "nb_round": trmnt.nb_round,
+                        "c_time": trmnt.c_time, "detail": trmnt.detail,
+                        "i_player": trmnt.i_player,
+                        "i_round": trmnt.i_round, "INFO": info_r}
+        t_tab.insert(serial_trnmt)
+        for nb in range(len(list_p)):
+            fp = Query()
+            p_tab.update({"score": list_p[nb].score},
+                         fp.ident == list_p[nb].ident)
+            p_tab.update({"meet": list_p[nb].meet},
+                         fp.ident == list_p[nb].ident)
 
     def load_data(self, t_tab, p_tab):
         """load_data"""
@@ -51,7 +78,6 @@ class ManagData:
         loc = alldata_t[-1].get("place")
         date = alldata_t[-1].get("date")
         nb_r = alldata_t[-1].get("nb_round")
-        print(nb_r)
         c_time = alldata_t[-1].get("c_time")
         detail = alldata_t[-1].get("detail")
         i_player = alldata_t[-1].get("i_player")
@@ -61,6 +87,7 @@ class ManagData:
         trmnt.i_player = i_player
         trmnt.i_round = i_round
         trmnt.round = inforound
+        t_tab.remove(doc_ids=[(len(t_tab))])
         #  R and G
         nb = 0
         for _ in range(trmnt.i_round):
@@ -73,8 +100,6 @@ class ManagData:
             rounds.time_start = time_start
             rounds.time_end = time_end
             rounds.list_match = list_match
-            print("en dessous")
-            print(rounds)
             for nb_g in range(len(list_match)):
                 game = model_g.Game(rounds.list_match[nb_g])
                 list_g.append(game)
@@ -101,5 +126,4 @@ class ManagData:
             list_p.append(player)
         # end
         count = i_round + 1
-        print(list_p)
         return count, nb_r, p_tab, t_tab, trmnt, list_p, list_r, list_g, nb_p
