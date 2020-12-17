@@ -4,7 +4,11 @@ Programme de création de tournoi d'echec (système suisse)
 ## Pré-requis
 
 Version Python : 3.8.3  
-Python packages : tinydb==4.3.0  
+
+Python Package : 
+tinydb==4.3.0  
+flake8==3.8.4  
+flake8-html==0.4.1  
 
 Installation automatique des packages
 ```bash
@@ -16,6 +20,11 @@ pip install -r requirements.txt
 ### Lancer le programme:
 ```bash
 python -m chess_tournaments
+```
+
+### Creer un rapport flake8-html:
+```bash
+flake8 chess_tournaments --format=html --htmldir=flake-report
 ```
 
 ### Options Start

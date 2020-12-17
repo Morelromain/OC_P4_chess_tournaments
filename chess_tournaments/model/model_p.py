@@ -42,25 +42,22 @@ Occupé : {7} Rencontre : {8}'.format(self.name, self.fname, self.date,
         nb_datap = len(alldata_p)
         self.ident = nb_datap + 1
 
+    def update_ident(self, ident):
+        """update_ident"""
+        self.ident = ident
+
     def save_p(self, p_tab):
         fp = Query()
         p_tab.update({"score": self.score}, fp.ident == self.ident)
         p_tab.update({"meet": self.meet}, fp.ident == self.ident)
 
-    def search_p(self, p_tab):
-        """search player, if exist remplace data and take this ident
-        if dont exist create in db"""
-        serialized_player = {"ident": self.ident, "name": self.name,
-                             "fname": self.fname, "date": self.date,
-                             "sex": self.sex, "rank": self.rank,
-                             "score": self.score, "taken": self.taken,
-                             "meet": self.meet}
-        fp = Query()
-        exist = p_tab.search((fp.name == self.name) & (fp.fname == self.fname))
-        if not(exist):
-            print("test")
-            p_tab.insert(serialized_player)
-        else:
-            print("test2")
-            self.ident = exist[0].get("ident")
-        
+    def serial_p(self, p_tab):
+        """serialized_player, and take name, fname and date ident player"""
+        serial_p = {"ident": self.ident, "name": self.name,
+                    "fname": self.fname, "date": self.date,
+                    "sex": self.sex, "rank": self.rank,
+                    "score": self.score, "taken": self.taken,
+                    "meet": self.meet}
+        search_n = self.name
+        search_f = self.fname
+        return serial_p, search_n, search_f

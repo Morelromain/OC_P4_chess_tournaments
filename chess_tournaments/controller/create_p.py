@@ -4,6 +4,7 @@ from operator import attrgetter
 
 from ..model import model_p
 from . import validation as val
+from . import manag_data as md
 
 
 class ContP:
@@ -24,7 +25,8 @@ class ContP:
                 rank = val.Valid().v_int("le elo du joueur : ")
                 player = model_p.Player(name, fname, date, sex, rank)
                 player.collect_id(p_tab)
-                player.search_p(p_tab)
+                serial_p, search_n, search_f = player.serial_p(p_tab)
+                md.ManagData().search_p(serial_p, search_n, search_f, p_tab, player)
                 player.append_meet(player.ident)
                 print(player)
                 valid = val.Valid().v_summary("Valider? (O/N) : ")

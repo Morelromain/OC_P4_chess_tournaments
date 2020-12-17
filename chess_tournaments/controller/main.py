@@ -75,12 +75,9 @@ class Menu:
         if menu == 6:
             if count == 0:
                 vmenu.ViewMenu().Sentence(7)
-            if count >= 1:  # A VOIR!!!
-                sort = input("tri par nom ou Elo? : ")
-                if sort == "nom":
-                    results.ViewResult().results_p_n(list_p, nb_p)
-                else:
-                    results.ViewResult().results_p_r(list_p, nb_p)
+            if count >= 1:
+                sort = input("Tri par Nom (1) ou Elo (2) ? ")
+                results.ViewResult().results_p(list_p, nb_p, sort)
         if menu == 7:
             if count < 2:
                 vmenu.ViewMenu().Sentence(8)

@@ -39,6 +39,19 @@ class ManagData:
                             reverse=True)
         results.ViewDB().display_all_p(list_a)
 
+    def search_p(self, serial_p, search_n, search_f, p_tab, player):
+        """Search player in data base Player and add or update player"""
+        fp = Query()
+        exist = p_tab.search((fp.name == search_n) & (fp.fname == search_f))
+        if not(exist):
+            print("Joueur Créé")
+            p_tab.insert(serial_p)
+        else:
+            ident = exist[0].get("ident")
+            player.update_ident(ident)
+            print(ident)
+            print("Joueur existant dans la DataBase")
+
     def save_data(self, p_tab, t_tab, trmnt, list_p, list_r):
         """save_data"""
         info_r = []
