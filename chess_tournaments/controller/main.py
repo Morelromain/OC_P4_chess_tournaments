@@ -65,7 +65,6 @@ class Menu:
                                                          list_r, count, nb_p)
                     trmnt.add_i_round(list_r[count-1].name_r)
                     trmnt.add_round(list_r[count-1])
-                    print(list_r[count-1].list_match)
             count += 1
         if menu == 5:
             if count < 2:

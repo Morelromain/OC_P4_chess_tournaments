@@ -16,7 +16,7 @@ class ContT:
             loc = val.Valid().v_str("le lieu du tournois : ")
             date_d = val.Valid().v_date("la date de debut du tournoi : ")
             date_f = val.Valid().v_duree("tournoi sur plusieurs jours?(O/N): ")
-            date = (str(date_d) + str(date_f))
+            date = (str(date_d) + " " + str(date_f))
             c_time = val.Valid().v_str("bullet/blitz/coup rapide : ")
             detail = val.Valid().v_str("la description du tournois : ")
             nb_p = val.Valid().v_player("nombre de joueur (pair): ")

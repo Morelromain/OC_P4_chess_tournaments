@@ -17,13 +17,13 @@ class ViewResult:
             la = sorted(list_p, key=lambda list_p: list_p.name)
             print('Classement des joueurs du tournoi: ')
             for nb in range(nb_p):
-                print('joueur', nb+1, ': {0}.'.format(la[nb]))
+                print(nb+1, ': {0}.'.format(la[nb]))
             input("appuyer sur entrée pour revenir au menu")
         else:
             lb = sorted(list_p, key=lambda list_p: list_p.rank, reverse=True)
             print('Classement des joueurs du tournoi: ')
             for nb in range(nb_p):
-                print('joueur', nb+1, ': {0}.'.format(lb[nb]))
+                print(nb+1, ': {0}.'.format(lb[nb]))
             input("appuyer sur entrée pour revenir au menu")
 
     def results_g(self, list_game):
@@ -33,7 +33,7 @@ class ViewResult:
             print("match", nb+1, ": ", list_game[nb])
         input("appuyer sur entrée pour revenir au menu")
 
-    def results_t(self, trmnt):  # A MODIF
+    def results_t(self, trmnt):
         """display tournament's info"""
         print('Affichage des infos du tournoi : ')
         print(trmnt)
@@ -52,4 +52,10 @@ class ViewDB:
         """View all player database"""
         alldata_t = p_tab.all()
         for nb in range(len(alldata_t)):
-            print(alldata_t[nb])
+            name_t = alldata_t[nb].get("name_t")
+            loc = alldata_t[nb].get("place")
+            date = alldata_t[nb].get("date")
+            nb_r = alldata_t[nb].get("nb_round")
+            c_time = alldata_t[-1].get("c_time")
+            print("Nom :", name_t, "Lieu :", loc, "Date :", date,
+                  "Rounds :", nb_r, "Mode :", c_time)

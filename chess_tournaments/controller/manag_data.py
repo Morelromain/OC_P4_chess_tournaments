@@ -49,7 +49,6 @@ class ManagData:
         else:
             ident = exist[0].get("ident")
             player.update_ident(ident)
-            print(ident)
             print("Joueur existant dans la DataBase")
 
     def save_data(self, p_tab, t_tab, trmnt, list_p, list_r):

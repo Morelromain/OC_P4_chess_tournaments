@@ -67,7 +67,6 @@ class ContOR:
                 nb_op += 1
             list_p[nb].taken = True
             list_p[nb_op].taken = True
-            print(list_p[nb_op].taken)
         except IndexError:
             nb_op = nb_op - 1
         return nb, nb_op
