@@ -22,10 +22,13 @@ class Menu:
     menu, count, nb_r, list_r = 0, 0, 10, []
     load = val.Valid().v_load("Nouveau tournoi(1)/Charger tournoi(2) : ")
     if load == "2":
-        vmenu.ViewMenu().Sentence(11)
-        (count, nb_r, p_tab, t_tab,
-         trmnt, list_p, list_r, list_g,
-         nb_p) = manag_data.ManagData().load_data(t_tab, p_tab)
+        try:
+            vmenu.ViewMenu().Sentence(11)
+            (count, nb_r, p_tab, t_tab,
+            trmnt, list_p, list_r, list_g,
+            nb_p) = manag_data.ManagData().load_data(t_tab, p_tab)
+        except IndexError:
+            vmenu.ViewMenu().Sentence(12)
     while menu != 10:
         if count == 0:
             vmenu.ViewMenu().menustart()
