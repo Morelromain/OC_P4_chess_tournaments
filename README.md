@@ -5,7 +5,7 @@ Programme de création de tournoi d'echec (système suisse)
 
 Version Python : 3.8.3  
 
-Python Package : 
+Python Package :  
 tinydb==4.3.0  
 flake8==3.8.4  
 flake8-html==0.4.1  
@@ -48,10 +48,10 @@ flake8 chess_tournaments --format=html --htmldir=flake-report
 *Modifie le Elo (niveau) d'un joueur dans la base de donnée*  
 
 4 : CREATION DU TOURNOIS ET DES JOUEURS  
-*Lance la création du tournoi et de ces joueurs associés*  
+*Lance la création du tournoi et de ses joueurs associés*  
 
 4 : FAIRE LE ROUND N°X  
-*Lance la création d'un round et de ces matchs associés*  
+*Lance la création d'un round et de ses matchs associés*  
 
 4 : FINIR LE TOURNOI ET QUITTER  
 *Enregistre les résultats du tournoi/joueurs dans les fichiers "database"*  
