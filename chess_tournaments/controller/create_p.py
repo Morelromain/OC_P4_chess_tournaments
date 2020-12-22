@@ -2,9 +2,9 @@
 
 from operator import attrgetter
 
-from ..model import model_p
-from . import validation as val
-from . import manag_data as md
+from chess_tournaments.model import model_p
+from chess_tournaments.controller import validation as val
+from chess_tournaments.controller import manag_data as md
 
 
 class ContP:

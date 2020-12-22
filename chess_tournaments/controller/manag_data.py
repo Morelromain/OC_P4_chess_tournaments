@@ -1,12 +1,12 @@
 """Create """
 
-from ..view import results
-from ..model import model_t
-from ..model import model_r
-from ..model import model_g
-from ..model import model_p
-
 from tinydb import Query
+
+from chess_tournaments.view import results
+from chess_tournaments.model import model_t
+from chess_tournaments.model import model_r
+from chess_tournaments.model import model_g
+from chess_tournaments.model import model_p
 
 
 class ManagData:

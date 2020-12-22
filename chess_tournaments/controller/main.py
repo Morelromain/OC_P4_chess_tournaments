@@ -1,15 +1,15 @@
 """Main"""
 
-from . import validation as val
-from . import create_t
-from . import create_p
-from . import make_first_r as mfr
-from . import make_other_r as mor
-from ..view import vmenu
-from ..view import results
-from . import manag_data
-
 from tinydb import TinyDB
+
+from chess_tournaments.controller import validation as val
+from chess_tournaments.controller import create_t
+from chess_tournaments.controller import create_p
+from chess_tournaments.controller import make_first_r as mfr
+from chess_tournaments.controller import make_other_r as mor
+from chess_tournaments.controller import manag_data
+from chess_tournaments.view import vmenu
+from chess_tournaments.view import results
 
 
 class Menu:

@@ -2,10 +2,10 @@
 
 from operator import attrgetter
 
-from . import validation as val
-from ..model import model_r
-from ..model import model_g
-from ..view import start_r
+from chess_tournaments.controller import validation as val
+from chess_tournaments.model import model_r
+from chess_tournaments.model import model_g
+from chess_tournaments.view import start_r
 
 
 class ContFR:

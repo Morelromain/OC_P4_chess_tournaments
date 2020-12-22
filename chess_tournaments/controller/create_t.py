@@ -1,7 +1,7 @@
 """Create """
 
-from ..model import model_t
-from . import validation as val
+from chess_tournaments.model import model_t
+from chess_tournaments.controller import validation as val
 
 
 class ContT:
