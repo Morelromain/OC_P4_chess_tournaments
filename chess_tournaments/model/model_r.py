@@ -30,7 +30,7 @@ class Round:
     def display_match(self):
         """display match"""
         print("\n{0} Début: {1} Fin: {2}".format(self.name_r, self.time_start,
-                                               self.time_end,))
+                                                 self.time_end,))
         for nb in range(len(self.list_match)):
             print("{0} {1} VS {2} {3}".format(self.list_match[nb][0][0],
                                               self.list_match[nb][0][1],

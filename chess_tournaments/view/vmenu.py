@@ -72,4 +72,4 @@ class ViewMenu:
         if m_choice == 11:
             print("CHARGEMENT DU PRECEDENT TOURNOI")
         if m_choice == 12:
-            print("Pas de tournoi à charger")            
+            print("Pas de tournoi à charger")

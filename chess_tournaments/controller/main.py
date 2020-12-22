@@ -25,8 +25,8 @@ class Menu:
         try:
             vmenu.ViewMenu().Sentence(11)
             (count, nb_r, p_tab, t_tab,
-            trmnt, list_p, list_r, list_g,
-            nb_p) = manag_data.ManagData().load_data(t_tab, p_tab)
+             trmnt, list_p, list_r, list_g,
+             nb_p) = manag_data.ManagData().load_data(t_tab, p_tab)
         except IndexError:
             vmenu.ViewMenu().Sentence(12)
     while menu != 10:
