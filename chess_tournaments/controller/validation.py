@@ -18,6 +18,19 @@ class Valid:
                 print("Chiffre invalide")
         return nb
 
+    def v_elo(self, ask):
+        """Valid question if int and not empty"""
+        while True:
+            try:
+                nb = int(input(ask))
+                if nb < 3000:
+                    break
+                else:
+                    print("Chiffre trop grand")
+            except ValueError:
+                print("Chiffre invalide")
+        return nb
+
     def v_player(self, ask):
         """Valid question if int and not empty"""
         while True:
@@ -36,7 +49,10 @@ class Valid:
         while True:
             try:
                 score = float(input("Resultat  " + ident + ": "))
-                break
+                if score == 0 or score == 1 or score == 0.5:
+                    break
+                else:
+                    print("Score invalide")
             except ValueError:
                 print("Score invalide")
         return score

@@ -22,7 +22,7 @@ class ContP:
                 fname = val.Valid().v_str("le prénom du joueur : ")
                 date = val.Valid().v_date("la date de naissance du joueur : ")
                 sex = val.Valid().v_sex("le sexe du joueur (F/M) : ")
-                rank = val.Valid().v_int("le elo du joueur : ")
+                rank = val.Valid().v_elo("le elo du joueur : ")
                 player = model_p.Player(name, fname, str(date), sex, rank)
                 player.collect_id(p_tab)
                 serial_p, search_n, search_f = player.serial_p(p_tab)

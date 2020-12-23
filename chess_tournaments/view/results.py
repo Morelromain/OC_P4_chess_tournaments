@@ -39,6 +39,19 @@ class ViewResult:
         print(trmnt)
         input("appuyer sur entrée pour revenir au menu")
 
+    def final(self, list_p, nb_p):
+        """final display"""
+        print('Affichage des infos du tournoi : ')
+        la = sorted(list_p, key=lambda list_p: list_p.rank, reverse=True)
+        print('Les Vainqueurs sont : ')
+        print('1 er:  {0} {1} {2}'.format(la[0].ident, la[0].name, la[0].fname))
+        print('2 ème: {0} {1} {2}'.format(la[1].ident, la[1].name, la[1].fname))
+        print('3 ème: {0} {1} {2}'.format(la[2].ident, la[2].name, la[2].fname))
+        print('\nClassement des joueurs : ')
+        for nb in range(nb_p):
+            print(nb+1, ': {0}'.format(la[nb]))
+        input("appuyer sur entrée pour sauvegarder et quitter")
+
 
 class ViewDB:
     """View all player database"""

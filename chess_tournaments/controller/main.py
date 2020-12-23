@@ -59,6 +59,7 @@ class Menu:
                 trmnt.add_round(list_r[count-1])
             if count > 1:
                 if count == nb_r + 1:
+                    results.ViewResult().final(list_p, nb_p)
                     vmenu.ViewMenu().Sentence(5)
                     manag_data.ManagData().save_data(p_tab, t_tab, trmnt,
                                                      list_p, list_r)
